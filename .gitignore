@@ -1,0 +1,12 @@
+# File tạm của Word khi đang mở tài liệu
+~$*.docx
+~$*.doc
+
+# Hệ điều hành / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+
+# Cấu hình cá nhân của Claude Code (launch.json vẫn được commit)
+.claude/settings.local.json
