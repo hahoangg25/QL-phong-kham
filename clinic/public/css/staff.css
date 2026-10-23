@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Hệ thống quản lý nội bộ
+   ========================================================================== */
+:root {
+  --sidebar-width: 256px;
+  --sidebar-bg: #0f2341;
+  --sidebar-color: #b8c4d6;
+  --accent: #1977cc;
+  --accent-soft: #eaf3fc;
+  --body-bg: #f3f6fb;
+  --purple: #6f42c1;
+}
+
+body { font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--body-bg); color: #344054; font-size: 14.5px; }
+h1, h2, h3, h4, h5, h6 { font-family: "Montserrat", sans-serif; color: #112344; }
+a { color: var(--accent); }
+
+.bg-purple { background-color: var(--purple) !important; color: #fff; }
+.text-purple { color: var(--purple) !important; }
+.badge-status { font-weight: 500; padding: .4em .7em; }
+.btn-primary { background: var(--accent); border-color: var(--accent); }
+
+.staff-wrapper { display: flex; min-height: 100vh; }
+
+/* Sidebar */
+.staff-sidebar {
+  width: var(--sidebar-width); background: var(--sidebar-bg); color: var(--sidebar-color); position: fixed; inset: 0 auto 0 0;
+  overflow-y: auto; z-index: 1030; transition: transform .25s;
+}
+.sidebar-brand { display: flex; align-items: center; gap: 10px; padding: 18px 20px; color: #fff; text-decoration: none; font-family: "Montserrat"; font-weight: 700; font-size: 18px; border-bottom: 1px solid rgba(255,255,255,.06); }
+.sidebar-brand small { display: block; font-size: 11px; font-weight: 500; color: #7fb6ec; letter-spacing: .5px; text-transform: uppercase; }
+.sidebar-brand:hover { color: #fff; }
+.logo-mark { width: 38px; height: 38px; border-radius: 11px; display: inline-flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #1977cc, #3fbbc0); color: #fff; font-size: 19px; }
+.sidebar-nav { padding: 10px 0 30px; }
+.sidebar-heading { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; color: #6c7d96; padding: 16px 22px 6px; font-weight: 600; }
+.sidebar-link { display: flex; align-items: center; gap: 12px; padding: 8px 22px; color: var(--sidebar-color); text-decoration: none; font-size: 14px; border-left: 3px solid transparent; }
+.sidebar-link i { font-size: 17px; width: 20px; text-align: center; }
+.sidebar-link:hover { color: #fff; background: rgba(255,255,255,.04); }
+.sidebar-link.active { color: #fff; background: rgba(25,119,204,.22); border-left-color: #3fa2ff; }
+
+/* Main */
+.staff-main { flex: 1; margin-left: var(--sidebar-width); min-width: 0; display: flex; flex-direction: column; }
+.staff-topbar { height: 66px; background: #fff; display: flex; align-items: center; padding: 0 24px; border-bottom: 1px solid #e7ecf3; position: sticky; top: 0; z-index: 1020; }
+.topbar-title h1 { font-size: 19px; margin: 0; font-weight: 600; }
+.topbar-icon { font-size: 20px; color: #475467; }
+.staff-content { padding: 24px; flex: 1; }
+.staff-footer { padding: 14px 24px; color: #98a2b3; font-size: 12.5px; border-top: 1px solid #e7ecf3; background: #fff; }
+
+@media (max-width: 991.98px) {
+  .staff-sidebar { transform: translateX(-100%); }
+  .staff-sidebar.show { transform: translateX(0); box-shadow: 0 0 40px rgba(0,0,0,.3); }
+  .staff-main { margin-left: 0; }
+  .staff-content { padding: 16px; }
+}
+
+/* Thành phần */
+.card { border: 0; border-radius: 12px; box-shadow: 0 1px 3px rgba(16,24,40,.06), 0 1px 2px rgba(16,24,40,.04); }
+.card > .card-header { background: #fff; border-bottom: 1px solid #eef1f6; padding: .85rem 1.15rem; font-weight: 600; font-family: "Montserrat"; color: #112344; border-radius: 12px 12px 0 0; }
+.card > .card-footer { background: #fff; border-top: 1px solid #eef1f6; border-radius: 0 0 12px 12px; }
+.table > :not(caption) > * > * { padding: .65rem .75rem; }
+.table thead th { font-size: 12.5px; text-transform: uppercase; letter-spacing: .3px; color: #667085; font-weight: 600; background: #f9fafb; border-bottom-width: 1px; white-space: nowrap; }
+.table-hover tbody tr:hover { background: #f8fbff; }
+.form-label { font-weight: 500; font-size: 13.5px; color: #344054; margin-bottom: .3rem; }
+.required::after { content: " *"; color: #dc3545; }
+
+.stat-card { padding: 18px; display: flex; gap: 14px; align-items: center; }
+.stat-card .stat-icon { width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+.stat-card .stat-value { font-size: 24px; font-weight: 700; color: #112344; line-height: 1.1; font-family: "Montserrat"; }
+.stat-card .stat-label { color: #667085; font-size: 13px; }
+.soft-primary { background: #e8f1fc; color: #1977cc; }
+.soft-success { background: #e3f6ec; color: #18864b; }
+.soft-warning { background: #fff4de; color: #c27c0e; }
+.soft-danger { background: #fde8e8; color: #d03b3b; }
+.soft-purple { background: #efe8fb; color: #6f42c1; }
+.soft-info { background: #e0f5f8; color: #0f8aa0; }
+
+.filter-bar { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(16,24,40,.06); }
+.empty-state { text-align: center; padding: 40px 20px; color: #98a2b3; }
+.empty-state i { font-size: 42px; display: block; margin-bottom: 8px; }
+
+/* Hàng đợi */
+.queue-item { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; border: 1px solid #edf1f7; background: #fff; margin-bottom: 8px; }
+.queue-item.priority { border-color: #ffd28a; background: #fffaf0; }
+.queue-item.current { border-color: #9cc8f2; background: #f2f8ff; }
+.queue-no { width: 48px; height: 48px; border-radius: 12px; background: var(--accent-soft); color: var(--accent); font-weight: 800; font-size: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-family: "Montserrat"; }
+.queue-item.priority .queue-no { background: #ffe9c2; color: #b26a00; }
+
+/* Khám bệnh */
+.patient-banner { background: linear-gradient(135deg, #0f2341, #1977cc); color: #fff; border-radius: 12px; padding: 16px 20px; }
+.patient-banner h2, .patient-banner h3 { color: #fff; }
+.allergy-alert { background: #fff1f0; border: 1px solid #ffccc7; color: #a8071a; border-radius: 10px; padding: 8px 12px; }
+.nav-tabs .nav-link { color: #475467; font-weight: 500; }
+.nav-tabs .nav-link.active { color: var(--accent); }
+.vital-input .input-group-text { font-size: 12px; min-width: 56px; justify-content: center; }
+.locked-badge { background: #f2f4f7; border: 1px solid #d0d5dd; color: #475467; border-radius: 8px; padding: 6px 10px; font-size: 13px; }
+
+/* Autocomplete */
+.ac-wrap { position: relative; }
+.ac-list { position: absolute; z-index: 1050; left: 0; right: 0; top: 100%; background: #fff; border: 1px solid #dee2e6; border-radius: 8px; box-shadow: 0 8px 24px rgba(0,0,0,.1); max-height: 280px; overflow-y: auto; }
+.ac-item { padding: 8px 12px; cursor: pointer; font-size: 14px; }
+.ac-item:hover, .ac-item.active { background: var(--accent-soft); }
+.ac-item small { color: #667085; }
+
+/* In ấn */
+@media print {
+  .staff-sidebar, .staff-topbar, .staff-footer, .no-print, .btn { display: none !important; }
+  .staff-main { margin-left: 0; }
+  .staff-content { padding: 0; }
+  body { background: #fff; }
+  .card { box-shadow: none; }
+}

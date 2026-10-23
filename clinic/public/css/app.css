@@ -1,0 +1,111 @@
+/* ==========================================================================
+   Bổ sung cho template Clinic - cổng bệnh nhân
+   ========================================================================== */
+:root {
+  --accent-color: #1977cc;
+  --nav-hover-color: #1977cc;
+  --nav-dropdown-hover-color: #1977cc;
+  --soft-accent: #eaf3fc;
+  --purple: #6f42c1;
+}
+
+.bg-purple { background-color: var(--purple) !important; color: #fff; }
+.text-purple { color: var(--purple) !important; }
+.badge-status { font-weight: 500; padding: .4em .7em; }
+
+/* Header: trang trong luôn có nền trắng để nội dung cuộn không lộ qua header */
+.inner-page .header { --background-color: #ffffff; }
+.header .logo { gap: 10px; }
+.header .logo .logo-mark,
+.staff-sidebar .logo-mark {
+  width: 40px; height: 40px; border-radius: 12px; display: inline-flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #1977cc, #3fbbc0); color: #fff; font-size: 20px;
+}
+.header .logo h1 { font-size: 26px; margin: 0; font-weight: 700; color: var(--heading-color); }
+.header .logo h1 small { font-size: 14px; font-weight: 500; color: var(--accent-color); }
+.btn-booking {
+  background: var(--accent-color); color: #fff; border-radius: 50px; padding: 9px 22px; font-weight: 500;
+  align-items: center; margin-left: 24px; white-space: nowrap; transition: .3s;
+}
+.btn-booking:hover { color: #fff; background: color-mix(in srgb, var(--accent-color), #000 15%); }
+.navmenu .dropdown ul a { display: flex; align-items: center; }
+.dropdown-logout { background: none; border: 0; padding: 10px 20px; width: 100%; text-align: left; color: #dc3545; font-size: 15px; }
+
+/* Tiêu đề trang gọn hơn template gốc */
+.page-title .heading { padding: 40px 0 34px; }
+.page-title .heading h1 { font-size: 32px; }
+.flash-container:not(:has(.alert)) { display: none; }
+.index-page .flash-container:has(.alert) { padding-top: 130px; }
+.index-page .hero { padding-top: 140px; }
+.index-page .flash-container:has(.alert) + .hero { padding-top: 40px; }
+
+/* Thẻ chung */
+.card-soft { border: 0; border-radius: 14px; box-shadow: 0 4px 24px rgba(17, 35, 68, .07); }
+.card-soft > .card-header { background: transparent; border-bottom: 1px solid rgba(0,0,0,.06); padding: 1rem 1.25rem; font-weight: 600; }
+.icon-circle { width: 48px; height: 48px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: var(--soft-accent); color: var(--accent-color); font-size: 22px; flex-shrink: 0; }
+
+/* Tài khoản bệnh nhân */
+.account-sidebar { border-radius: 14px; overflow: hidden; position: sticky; top: 110px; }
+.account-sidebar .list-group-item { border: 0; padding: .7rem 1.1rem; font-size: 15px; }
+.account-sidebar .list-group-item.active { background: var(--soft-accent); color: var(--accent-color); font-weight: 500; border-left: 3px solid var(--accent-color); }
+
+/* Bộ chọn khung giờ (BN-07) */
+.slot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 10px; }
+.slot-btn {
+  border: 1px solid #d6e4f5; background: #fff; border-radius: 10px; padding: 8px 6px; text-align: center; cursor: pointer;
+  transition: .2s; line-height: 1.2;
+}
+.slot-btn .time { font-weight: 600; font-size: 15px; color: var(--heading-color); }
+.slot-btn .left { font-size: 12px; color: #2a9d55; }
+.slot-btn:hover:not(:disabled) { border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(25,119,204,.12); }
+.slot-btn.active { background: var(--accent-color); border-color: var(--accent-color); }
+.slot-btn.active .time, .slot-btn.active .left { color: #fff; }
+.slot-btn:disabled { background: #f3f4f6; border-color: #eee; cursor: not-allowed; }
+.slot-btn:disabled .time { color: #adb5bd; text-decoration: line-through; }
+.slot-btn:disabled .left { color: #adb5bd; }
+
+.date-strip { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; }
+.date-chip {
+  min-width: 74px; border: 1px solid #d6e4f5; border-radius: 12px; background: #fff; padding: 8px 6px; text-align: center; cursor: pointer; transition: .2s;
+}
+.date-chip .dow { font-size: 12px; color: #6c757d; }
+.date-chip .day { font-size: 18px; font-weight: 700; color: var(--heading-color); }
+.date-chip.active { background: var(--accent-color); border-color: var(--accent-color); }
+.date-chip.active .dow, .date-chip.active .day { color: #fff; }
+.date-chip.off { opacity: .45; }
+
+.step-indicator { display: flex; gap: 6px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.step-indicator .step { flex: 1; min-width: 120px; padding: 10px 12px; border-radius: 10px; background: #f1f5fb; color: #6c757d; font-size: 14px; }
+.step-indicator .step.active { background: var(--accent-color); color: #fff; }
+.step-indicator .step.done { background: #d9f2e3; color: #1e7e45; }
+
+.doctor-option { border: 1px solid #e3ebf6; border-radius: 12px; padding: 12px; cursor: pointer; transition: .2s; height: 100%; }
+.doctor-option:hover { border-color: var(--accent-color); }
+.doctor-option.active { border-color: var(--accent-color); background: var(--soft-accent); box-shadow: 0 0 0 3px rgba(25,119,204,.12); }
+.doctor-option img { width: 56px; height: 56px; object-fit: cover; border-radius: 50%; }
+
+/* Mã QR lịch hẹn */
+.qr-box { background: #fff; border: 1px dashed #b7cde6; border-radius: 14px; padding: 14px; display: inline-block; }
+.qr-box svg { width: 180px; height: 180px; display: block; }
+.otp-input { letter-spacing: 12px; font-size: 28px; text-align: center; font-weight: 700; max-width: 260px; }
+.countdown { font-variant-numeric: tabular-nums; font-weight: 700; }
+
+/* Thẻ bác sĩ */
+.doctor-card { border-radius: 16px; overflow: hidden; height: 100%; transition: .3s; }
+.doctor-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(17,35,68,.12) !important; }
+.doctor-card .photo { aspect-ratio: 4 / 3.4; background: #eef4fb; overflow: hidden; }
+.doctor-card .photo img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.rating-stars i { color: #ffb400; }
+
+.timeline-status { list-style: none; padding-left: 0; margin: 0; }
+.timeline-status li { position: relative; padding: 0 0 14px 24px; font-size: 14px; }
+.timeline-status li::before { content: ""; position: absolute; left: 6px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent-color); }
+.timeline-status li::after { content: ""; position: absolute; left: 10px; top: 16px; bottom: 0; width: 1px; background: #d6e4f5; }
+.timeline-status li:last-child::after { display: none; }
+
+.queue-number-big { font-size: 64px; font-weight: 800; color: var(--accent-color); line-height: 1; }
+
+@media print {
+  .header, .footer, .account-sidebar, .btn, .no-print, #scroll-top { display: none !important; }
+  .page-title { padding-top: 0; }
+}
